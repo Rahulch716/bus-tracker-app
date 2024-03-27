@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1060013026537",
+    "project_id": "bustrackingapp-5041c",
+    "storage_bucket": "bustrackingapp-5041c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060013026537:android:1dd8c194a1557208111478",
+        "android_client_info": {
+          "package_name": "com.example.bus_tracker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvecPGzAWQaza3aj3JahDSZfNgyLfm05s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
