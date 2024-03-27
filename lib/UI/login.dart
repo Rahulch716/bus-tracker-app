@@ -53,73 +53,90 @@ class Tabbar extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Login'),
+          centerTitle: true,
+          title: const Text('ICFAI BUS TRACKER'),
         ),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/back_2.jpg"),
+              image: AssetImage("images/background_1.png"),
               fit: BoxFit.cover,
             ),
           ),
           child: Center(
-            child: SizedBox(
-              height: 300,
-              width: 400,
-              child: Card(
-                child: DefaultTabController(
-                  length: 2,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        height: 60,
-                        child: const TabBar(
-                          labelColor: Colors.indigo,
-                          unselectedLabelColor: Colors.indigo,
-                          indicatorColor: Colors.blueGrey,
-                          indicatorWeight: 2,
-                          tabs: <Widget>[
-                            Tab(
-                                text: "STUDENT LOGIN",
-                                icon: Icon(Icons.person)),
-                            Tab(
-                                text: "DRIVER LOGIN",
-                                icon: Icon(Icons.airport_shuttle_rounded)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 200,
-                        child: TabBarView(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(75.0),
-                              child: ElevatedButton(
-                                child: const Text('Sign in with Google'),
-                                onPressed: () async {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Home()));
-                                  // _handleSignIn();
-                                  // if (await _googleSignIn.isSignedIn() ==
-                                  //     true) {
-                                  //   Navigator.push(
-                                  //       context,
-                                  //       MaterialPageRoute(
-                                  //           builder: (context) => Home()));
-                                  // }
-                                },
-                              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Image.asset(
+                      'images/Track_Your_Bus_Now-removebg-preview.png',
+                      fit: BoxFit.cover),
+                ),
+                SizedBox(
+                  height: 300,
+                  width: 400,
+                  child: Card(
+                    child: DefaultTabController(
+                      length: 2,
+                      child: Column(
+                        children: <Widget>[
+                          const SizedBox(
+                            height: 60,
+                            child: TabBar(
+                              labelColor: Colors.indigo,
+                              unselectedLabelColor: Colors.indigo,
+                              indicatorColor: Colors.blueGrey,
+                              indicatorWeight: 2,
+                              tabs: <Widget>[
+                                Tab(
+                                    text: "STUDENT LOGIN",
+                                    icon: Icon(Icons.person)),
+                                Tab(
+                                    text: "DRIVER LOGIN",
+                                    icon: Icon(Icons.airport_shuttle_rounded)),
+                              ],
                             ),
-                            MyCustomForm(),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 200,
+                            child: TabBarView(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(75.0),
+                                  child: ElevatedButton(
+                                    child: const Text('Sign in with Google'),
+                                    onPressed: () async {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Home()));
+                                      // _handleSignIn();
+                                      // if (await _googleSignIn.isSignedIn() ==
+                                      //     true) {
+                                      //   Navigator.push(
+                                      //       context,
+                                      //       MaterialPageRoute(
+                                      //           builder: (context) => Home()));
+                                      // }
+                                    },
+                                  ),
+                                ),
+                                MyCustomForm(),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ),

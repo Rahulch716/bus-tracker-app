@@ -26,9 +26,7 @@ class Home extends StatelessWidget {
               bottom: 50,
               left: 0,
               right: 0,
-              child: Container(
-                child: Map(),
-              ),
+              child: Map(),
             ),
             DraggableScrollableSheet(
               initialChildSize: 0.1,
