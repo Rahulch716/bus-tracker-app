@@ -148,7 +148,7 @@ class _MapState extends State<Map> {
 
   // static LatLng _center = LatLng(-15.4630239974464, 28.363397732282127);
   static LatLng _initialPosition =
-      const LatLng(-15.4630239974464, 28.363397732282127);
+      const LatLng(23.93326457544187, 91.33834812371511);
   final Set<Marker> _markers = {};
   static LatLng _lastMapPosition = _initialPosition;
   late GeoPoint geoPoint;
@@ -178,7 +178,7 @@ class _MapState extends State<Map> {
       // We haven't asked for permission yet or the permission has been denied before, but not permanently.
     } else {
       const GeoPoint driverPosition =
-          GeoPoint(-15.4630239974464, 28.363397732282127);
+          GeoPoint(23.833455461314042, 91.28517480174166);
     }
     // await db
     //     .collection('UserLocation')

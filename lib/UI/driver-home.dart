@@ -16,10 +16,10 @@ class DriverHome extends StatelessWidget {
       home: Scaffold(
         body: Map(),
         appBar: AppBar(
-          title: Text('Home'),
+          title: const Text('Driver Map'),
           centerTitle: true,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () =>
                 {FirebaseAuth.instance.signOut(), Navigator.pop(context)},
           ),
@@ -39,16 +39,17 @@ class _MapState extends State<Map> {
 
   // static LatLng _center = LatLng(-15.4630239974464, 28.363397732282127);
   static LatLng _initialPosition =
-      LatLng(-15.4630239974464, 28.363397732282127);
+      const LatLng(23.93326457544187, 91.33834812371511);
   final Set<Marker> _markers = {};
   static LatLng _lastMapPosition = _initialPosition;
   late GeoPoint currentLocation;
+  bool locationShared = false;
 
   @override
   void initState() {
     super.initState();
-    _getUserLocation();
-    _updateUserLocation();
+    // _getUserLocation();
+    // _updateUserLocation();
   }
 
   void _updateUserLocation() async {
@@ -134,7 +135,8 @@ class _MapState extends State<Map> {
               ),
             )
           : Container(
-              child: Stack(children: <Widget>[
+              child:
+                  Stack(alignment: Alignment.bottomCenter, children: <Widget>[
                 GoogleMap(
                   // markers: _markers,
 
@@ -143,6 +145,28 @@ class _MapState extends State<Map> {
                     target: _initialPosition,
                     zoom: 14.4746,
                   ),
+                  markers: <Marker>{
+                    const Marker(
+                      markerId: MarkerId("1"),
+                      position: LatLng(23.934615848921727, 91.34118401245566),
+                    ),
+                    const Marker(
+                      markerId: MarkerId("2"),
+                      position: LatLng(23.932281939676507, 91.33993946752913),
+                    ),
+                    const Marker(
+                      markerId: MarkerId("3"),
+                      position: LatLng(23.93358618827972, 91.3373430893203),
+                    ),
+                    const Marker(
+                      markerId: MarkerId("4"),
+                      position: LatLng(23.93071290133999, 91.3376327678808),
+                    ),
+                    const Marker(
+                      markerId: MarkerId("5"),
+                      position: LatLng(23.929977408055546, 91.33566939097084),
+                    ),
+                  },
                   onMapCreated: _onMapCreated,
                   zoomGesturesEnabled: true,
                   onCameraMove: _onCameraMove,
@@ -150,6 +174,41 @@ class _MapState extends State<Map> {
                   compassEnabled: true,
                   myLocationButtonEnabled: false,
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blueAccent,
+                          foregroundColor: Colors.white),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Column(
+                                children: [
+                                  Text(locationShared
+                                      ? "Your live location is getting shared now"
+                                      : "Location sharing is stopped"),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Okay"),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                        setState(() {
+                          locationShared = !locationShared;
+                        });
+                      },
+                      child: Text(locationShared
+                          ? "Stop Sharing Location"
+                          : "Share Live Location")),
+                )
               ]),
             ),
     );
